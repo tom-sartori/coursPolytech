@@ -1,0 +1,2 @@
+Q1 : votre nom d'utilisateur sur le système : tom
+Q2 : qui exécute la commande ps d'après le résultat obtenu : root

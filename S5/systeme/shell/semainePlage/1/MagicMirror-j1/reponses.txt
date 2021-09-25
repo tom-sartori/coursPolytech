@@ -1,0 +1,3 @@
+Q1 : chmod u+w reponses.txt
+Q2 : serveronly
+Q3 : Couldn't list extended attributes: Permission denied
