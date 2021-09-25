@@ -1,3 +1,0 @@
-Le chemin relatif du répertoire modules est : ./tests/configs/modules
-Le nombre de sous-dossiers du répertoire MagicMirror est : 8
-Le nom du fichier caché est : .Charlie.js
