@@ -81,3 +81,36 @@ FROM EXERCICE)
 
 
 
+4. 
+
+SELECT p.IDD, NOTE, SUM(bareme), NOTE / SUM(bareme)
+FROM PASSAGE p 	
+JOIN ELEVE e ON p.IDEL = e.IDEL
+JOIN CONTENU c ON p.IDD = c.IDD
+WHERE nom = 'Dupont' 
+AND prenom = 'Arnaud'  
+AND NOTE = (
+    	SELECT MIN(NOTE)
+ 	FROM PASSAGE p 
+   	JOIN ELEVE e ON p.IDEL = e.IDEL
+	WHERE nom = 'Dupont' AND prenom = 'Arnaud')
+GROUP BY IDD, NOTE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

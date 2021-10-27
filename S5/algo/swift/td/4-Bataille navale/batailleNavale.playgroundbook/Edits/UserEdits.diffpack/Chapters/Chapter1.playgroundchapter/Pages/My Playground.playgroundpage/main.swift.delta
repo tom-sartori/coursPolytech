@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>protocol AbstractCoordShip {
+    var x : Int { get } // 0 &lt;= x &lt;= 19
+    var y : Int { get } // 0 &lt;= y &lt;= 19
+    var alive : Bool { get set }
+    
+    init (x : Int, y : Int)
+    init (x : Int, y : Int, alive : Bool)
+}
+
+protocol AbstractGrid {
+    var listShip : [AbstractShip] { get set } 
+    
+    init (nRaw : Int, nColumn : Int) // Initialise tab
+    
+    // Check that coords between extr1 and extr2 are between 0 and 20. 
+    // Check that there isn't any ship between this coords. 
+    func canAddShip (extr1 : Int, extr2 : Int) -&gt; Bool 
+    func nShipSize3 () -&gt; Int // Return the number of ship in size three, in listShip.  
+    func addShip (ship : AbstractShip) -&gt; Void // Add the ship in listShip. Check canAddShip and nbShipSize3. 
+    
+    // Check for eah ship in listShip if touched. 
+    // If the ship touched isn't alive after, remove it in listShip.  
+    func attack (coordAttack : AbstractCoordShip) -&gt; AttackState 
+    func onView (coordAttack : AbstractCoordShip) -&gt; Bool
+}
+
+protocol AbstractShip {
+    var coords : [AbstractCoordShip] { get set }
+    
+    init (extr1 : AbstractCoordShip, extr2 : AbstractCoordShip)
+    
+    func getSize () -&gt; Int // 1 &lt;= size &lt;= 4
+    func isAlive () -&gt; Bool // Return False if every Coord.alive in coords, equal False. 
+    func isTouched (attack : AbstractCoordShip) -&gt; Bool // Modify state of coord.alive in coords. 
+}
+
+enum AttackState {
+    case TOUCHE
+    case COULE
+    case VIEW
+    case NONE
+}
+
+
+
+struct CoordShip : AbstractCoordShip {
+    var x: Int
+    var y: Int
+    var alive: Bool
+    
+    init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+        self.alive = false
+    }
+
+    init(x: Int, y: Int, alive: Bool) {
+        self.x = x
+        self.y = y
+        self.alive = alive
+    }
+}
+
+struct Ship : AbstractShip {
+    var coords: [AbstractCoordShip]
+    
+    init(extr1: AbstractCoordShip, extr2: AbstractCoordShip) {
+        self.coords = [AbstractCoordShip]()
+        
+        if extr1.x == extr2.x { 
+            var yCourant : Int
+            var yMax : Int
+            
+            if extr1.y &lt; extr2.y {
+                yCourant = extr1.y
+                yMax = extr2.y
+            }
+            else {
+                yCourant = extr2.y
+                yMax = extr1.y
+            }
+            
+            while yCourant &lt;= yMax {
+                self.coords.append(CoordShip(x: extr1.x, y: yCourant, alive: true))
+                yCourant += 1
+            }
+        }
+        else {
+            var xCourant : Int
+            var xMax : Int
+            
+            if extr1.x &lt; extr2.x {
+                xCourant = extr1.x
+                xMax = extr2.x
+            }
+            else {
+                xCourant = extr2.x
+                xMax = extr1.x
+            }
+            
+            while xCourant &lt;= xMax {
+                self.coords.append(CoordShip(x: xCourant, y: extr1.y, alive: true))
+                xCourant += 1
+            }
+        }
+    }
+
+    func getSize() -&gt; Int {
+        return abs(self.coords[0].x - self.coords[self.coords.count - 1].x) + abs(self.coords[0].y - self.coords[self.coords.count - 1].y) 
+    }
+
+    func isAlive() -&gt; Bool {
+        // Faux for qui retourne vrai au premier coordonné en vie. 
+        for elt in self.coords {
+            if elt.alive {
+                return true
+            }
+        }
+        return false
+    }
+
+    func isTouched(attack: AbstractCoordShip) -&gt; Bool {
+        // Faux for qui retourne vrai si un des éléments de self.coords correspond à attack. 
+        // self.coords[0].alive = false
+        for elt in self.coords {
+            if (attack.x == elt.x) &amp;&amp; (attack.y == elt.y) {
+                // elt.alive = Bool(false)
+                return true
+            }
+        }
+        return false
+    }
+}
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 3781}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

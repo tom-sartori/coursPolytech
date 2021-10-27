@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>func ex7 (x : Int) -&gt; Int {
+    var result : Int = 0
+    var x : Int = x
+    
+    while x &gt; 0 {
+        if (x % 2 != 0) &amp;&amp; (x % 3 != 0) &amp;&amp; (x % 7 != 0) &amp;&amp; (x % 11 != 0) {
+            result += 1
+        }
+        x -= 1
+    }
+    return result
+}
+
+// Retourne vrai si x est parfait. 
+// P: x &gt; 1
+func ex8Aux (x : Int) -&gt; Bool {
+    var xCopy : Int = x - 1
+    var sum : Int = 0
+    
+    while xCopy &gt; 0 {
+        if (sum &gt; x) {
+            return false
+        }
+        if x % xCopy == 0 {
+            sum += xCopy
+        }
+        xCopy -= 1
+    }
+    if x == sum {
+        return true
+    }
+    return false
+}
+
+// Retourne la somme des nombres parfaits inférieurs ou égaux à x. 
+// P : x &gt; 1
+func ex8 (x : Int) -&gt; Int {
+    var sum : Int = 0 
+    for i in 1...x {
+        if ex8Aux(x : i) {
+            sum += i
+        }
+    }
+    return sum
+}
+
+// Retourne vrai si x est premier. 
+func isPrime (x : Int) -&gt; Bool {
+    if (x &lt;= 1) {
+        return false
+    }
+    for i in 2..&lt;x {
+        if x % i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+// Retourne le x-ième nombre premier. 
+// x &gt; 0
+func ex9 (x : Int) -&gt; Int {
+    var result : Int = 0
+    var nbDePrime: Int = 0
+    var i : Int = 2
+    
+    while nbDePrime &lt; x {
+        if isPrime(x : i) {
+            result = i
+            nbDePrime += 1
+        }
+        i += 1
+    }
+    return result
+}
+
+
+for i in 1...10 {
+    // print ("ex7", i, ex7(x : i), separator : " : ")
+    // print ("ex8", i, ex8(x : i), separator : " : ")
+    print ("ex9", i, ex9(x : i), separator : " : ")  
+}
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 1562}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
