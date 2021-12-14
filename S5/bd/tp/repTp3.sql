@@ -1,0 +1,18 @@
+1. 
+
+ALTER TABLE `ELEVE` ADD `DATE_NAISSANCE` varchar(100); 
+
+
+4. 
+
+CREATE TABLE `MATIERE` (
+	`idMatiere` INT NOT NULL, 
+	`nomMatiere` varchar(100) NOT NULL
+); 
+ALTER TABLE `MATIERE` ADD PRIMARY KEY(`idMatiere`);
+
+ALTER TABLE `EXERCICE` ADD `idMatiere` INT; 
+
+ALTER TABLE `EXERCICE` 
+ADD CONSTRAINT `kf_exercice_idMatiere` 
+FOREIGN KEY (idMatiere) REFERENCES MATIERE(idMatiere); 

@@ -98,14 +98,119 @@ GROUP BY IDD, NOTE
 
 
 
+IDD	NOTE	SUM(bareme)	NOTE / SUM(bareme)	
+4	3	4	0.75	
+7	3	5	0.6	
+
+
+6. Quel est le nom du professeur ayant créé le plus de devoirs ?
 
 
 
+nom		IDD	
+James Bond	1	
+James Bond	2	
+James Bond	4	
+Bioman	3	
+Bioman	5	
+Bioman	9	
+Superman	6	
+Batman	8	
+Hulk		10	
+Zorro		7	
+
+
+SELECT nom
+FROM PROF p 
+JOIN DEVOIR d ON p.idp = d.PROF_CREATEUR
+GROUP BY p.IDP, NOM
+HAVING COUNT(idd) = (
+    SELECT MAX(COUNT(d.idd))
+    FROM DEVOIR d
+    GROUP BY PROF_CREATEUR); 
+
+
+SELECT nom
+FROM PROF p 
+JOIN DEVOIR d ON p.idp = d.PROF_CREATEUR
+GROUP BY p.IDP, NOM
+HAVING COUNT(idd) = (
+    SELECT MAX(`nb`)
+    FROM (
+        SELECT COUNT(*) AS `nb`
+        FROM DEVOIR d
+        GROUP BY PROF_CREATEUR
+	)
+)
+
+
+7. Quel est l’élève ayant passé le plus de devoirs du niveau correspondant au sien ?
 
 
 
+8. Quels sont les devoirs contenant des exercices de tous les niveaux ?
+
+SELECT IDD
+FROM CONTENU c 
+JOIN EXERCICE e ON c.IDEX = e.IDEX
+GROUP BY IDD 
+HAVING COUNT(DISTINCT NIVEAU) = (
+    SELECT COUNT(*) 
+    FROM NIVEAU)
 
 
+Rep : 
+
+SELECT IDD, NIVEAU
+FROM CONTENU c 
+JOIN EXERCICE e ON c.IDEX = e.IDEX
+ORDER BY 1, 2
+
+
+IDD NIVEAU  
+
+5   3eme    
+5   4eme    
+5   5eme    
+5   5eme    
+5   6eme      
+
+8   3eme    
+8   4eme    
+8   4eme    
+8   5eme    
+8   6eme    
+  
+
+
+
+9. Quels sont les devoirs contenant tous les exercices contenant le mot calcul ?
+
+
+SELECT IDD
+FROM CONTENU c 
+GROUP BY IDD 
+HAVING COUNT(IDEX) = (
+    SELECT COUNT(*)
+    FROM EXERCICE
+    WHERE CONTENU REGEXP '.*calcul.*'
+)   
+ 
+rep 
+
+IDD 
+10
+
+
+Rep pour check : 
+
+SELECT * 
+FROM EXERCICE
+WHERE CONTENU REGEXP '.*calcul.*'
+
+IDEX : 1, 3, 4, 6, 9, 10
+
+Rep = dev 10
 
 
 

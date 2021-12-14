@@ -273,7 +273,8 @@ struct TabInt : TInt {
       T(n) <= 3 + 10n + 4
      */
     func compare (t2 : TInt) -> Int {
-        assert (self.count() <= t2.count(), "t1.count !<= t2.count")
+        guard (self.count() <= t2.count()) else {return 1}
+        
         var i : Int = 0
         var avant : Bool = true
         var equal : Bool = true
@@ -300,6 +301,7 @@ struct TabInt : TInt {
         var j : Int = 0
         
         while i < t2.count() && j < self.count() {
+            // Invariant : ∀ a ∈ [0, i], ∀ b ∈ [0, j], ∃ k tq self[a : a+k] == t2[b : b + k]
             if t2[i] == self[j] {
                 j += 1
             }
@@ -307,24 +309,9 @@ struct TabInt : TInt {
                 j = 0
             }
             i += 1
+            // Arret : a >= t2.count() && b >= self.count()
         }
         return j >= self.count()
-        
-        
-        
-//
-//        var suite : Int = 0
-//        while i < self.count() && suite < t2.count() {
-//            if self[i] == t2[i] {
-//                print ("test")
-//                suite += 1
-//            }
-//            else {
-//                suite = 0
-//            }
-//            i += 1
-//        }
-//        return suite >= t2.count()
     }
 }
 
@@ -460,3 +447,19 @@ print ("t4 : ", t4)
 print("t1.isSub(tab: t4)=\(t1.isSub(t2: t4))")
 
 
+
+var t5 = TabInt(a: 0, n: 3)
+t5[0] = 3
+t5[1] = 4
+t5[2] = 5
+
+
+var t6 = TabInt(a: 0, n: 2)
+t6[0] = 3
+t6[1] = 4
+t6[2] = 5
+t6[3] = 4
+
+print ("t5 : ", t5)
+print ("t6 : ", t6)
+print("t5.isSub(tab: t6)=\(t5.isSub(t2: t6))")
