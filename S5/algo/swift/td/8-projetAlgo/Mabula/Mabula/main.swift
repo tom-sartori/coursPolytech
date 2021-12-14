@@ -1,42 +1,19 @@
-////
-////  main.swift
-////  Mabula
-////
-////  Created by Tom Sartori on 12/2/21.
-////
-////
 //
-//import Foundation
+//  main.swift
+//  Mabula
 //
-//var mabula = Mabula(isMultiScore: true)
-//print(mabula)
-//mabula.move(x: 7, y: 3, v: 5)
-//print(mabula)
-//mabula.move(x: 0, y: 3, v: 3)
-//print(mabula)
-////mabula.move(x: 1, y: 7, v: 2)
-////print(mabula)
-////print(mabula.getNumberEmptyCases(x: 1, y: 7))
+//  Created by Tom Sartori on 12/2/21.
 //
 //
-////print(mabula.isPlayerOneWin())
-//
-////assert(mabula.isEmpty(x: 1, y: 1))
-////assert(mabula.getNumberEmptyCases(x: 0, y: 2) == 6) // Direction verticale basse.
-////assert(mabula.getNumberEmptyCases(x: 7, y: 5) == 6) // Direction verticale haute.
-////assert(mabula.getNumberEmptyCases(x: 1, y: 0) == 6) // Direction horizontale droite.
-////assert(mabula.getNumberEmptyCases(x: 6, y: 7) == 6) // Direction horizontale gauche
-////
-////assert(mabula.getNumberEmptyCases(x1: 1, y1: 0, x2: 1, y2: 3) == 3)
-////assert(mabula.getNumberEmptyCases(x1: 1, y1: 0, x2: 1, y2: 3) == mabula.getNumberEmptyCases(x1: 1, y1: 3, x2: 1, y2: 0))
 
+import Foundation
 
 
 func run() {
     // Début de la partie de Mabula
     print("La partie commence, le joueur 1️⃣ a les billes blanches et le joueur 2️⃣ a les billes noires")
 
-    var jeu: Mabula = Mabula(decompteParLesLongueursMax: askIsMultiScore())
+    var jeu: Mabula = Mabula(decompteParLesLongueursMax: !askIsMultiScore())
 
     while jeu.isPlayerOneCanPlay() || jeu.isPlayerTwoCanPlay() {
         print("C'est au joueur ", jeu.isPlayerOneToPlay() ? "1️⃣" : "2️⃣", " de joueur. ")

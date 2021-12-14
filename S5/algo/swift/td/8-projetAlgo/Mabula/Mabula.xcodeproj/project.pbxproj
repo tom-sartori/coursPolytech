@@ -10,7 +10,7 @@
 		1C15235A3CF227DB2AA0744F /* PTMabula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C152A4AAEE1C4FF41CBCCD0 /* PTMabula.swift */; };
 		1C15287ECECFE501020EA63E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C15257F2AC76CBACE533CB8 /* main.swift */; };
 		1C15294A66264E9BBF455D98 /* Mabula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C15270664642E2230DFF9CA /* Mabula.swift */; };
-		1C1529BD03FEED1EBCDF2235 /* mainCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C152817E7913EED330D67F2 /* mainCopy.swift */; };
+		1C1529BD03FEED1EBCDF2235 /* mainAncien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C152817E7913EED330D67F2 /* mainAncien.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +29,7 @@
 		1C15228DE6B77DFD2580ACE2 /* Mabula */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Mabula; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C15257F2AC76CBACE533CB8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1C15270664642E2230DFF9CA /* Mabula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mabula.swift; sourceTree = "<group>"; };
-		1C152817E7913EED330D67F2 /* mainCopy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainCopy.swift; sourceTree = "<group>"; };
+		1C152817E7913EED330D67F2 /* mainAncien.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainAncien.swift; sourceTree = "<group>"; };
 		1C152A4AAEE1C4FF41CBCCD0 /* PTMabula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTMabula.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +66,7 @@
 				1C15257F2AC76CBACE533CB8 /* main.swift */,
 				1C15270664642E2230DFF9CA /* Mabula.swift */,
 				1C152A4AAEE1C4FF41CBCCD0 /* PTMabula.swift */,
-				1C152817E7913EED330D67F2 /* mainCopy.swift */,
+				1C152817E7913EED330D67F2 /* mainAncien.swift */,
 			);
 			path = Mabula;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 				1C15287ECECFE501020EA63E /* main.swift in Sources */,
 				1C15294A66264E9BBF455D98 /* Mabula.swift in Sources */,
 				1C15235A3CF227DB2AA0744F /* PTMabula.swift in Sources */,
-				1C1529BD03FEED1EBCDF2235 /* mainCopy.swift in Sources */,
+				1C1529BD03FEED1EBCDF2235 /* mainAncien.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

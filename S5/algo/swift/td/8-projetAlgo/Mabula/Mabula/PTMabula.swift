@@ -1,6 +1,6 @@
 // CustomStringConvertible est présent pour l'affichage uniquement
 protocol PTMabula : CustomStringConvertible, Sequence {
-    /// - Todo:
+
     associatedtype IteratorMabula : IteratorProtocol
 
     // Création d'un TMabula : initialise le plateau en plaçant 12 billles noires et 12 billes blanches sur les bords du plateau uniquement ; il n'y a pas plus de 2 billes de la même couleur placées à côté.
@@ -18,7 +18,7 @@ protocol PTMabula : CustomStringConvertible, Sequence {
     /// - Todo: A modifier. Mettre le joueur en param.
     // Compte la longueur maximale parmi les groupes des billes du joueur j.
 //    func compterMax() -> Int
-    mutating func getScoreBestGroup (isFromWhite: Bool) -> Int
+    mutating func getScoreBestGroup (isForWhite: Bool) -> Int
 
     /// - Todo: A modifier. Mettre le joueur en param.
     // Compte la multiplication de la longueur de chaque groupe de bille du joueur j.
