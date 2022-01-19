@@ -66,3 +66,54 @@ plt.plot(x, y3)
 
 fig2 = plt.figure()
 
+
+
+
+# Question 3 
+
+fig3 = plt.figure()
+plt.plot(x, y1, color='b')
+plt.plot(x, y2, color='b')
+plt.plot(x, y3, color='b')
+
+for i in np.arange(0, 10, 0.5): 
+    cte = i
+    cout = cte-2*x
+    plt.plot(x, cout, color='y')
+
+plt.show(fig3)
+
+
+
+# Question 4 
+
+fing4 = plt.figure()
+plt.xlim(0, 10)
+plt.ylim(0, 10)
+
+plt.plot(x, y1, color='b')
+plt.plot(x, y2, color='r')
+plt.plot(x, y3, color='g')
+
+for i in np.arange(0, 10, 0.5): 
+    cte = i
+    cout = cte-2*x
+    plt.plot(x, cout, color='y')
+    
+
+# Question 5 
+
+fing5 = plt.figure()
+plt.xlim(0, 10)
+plt.ylim(0, 10)
+
+plt.plot(x, y1, color='b')
+plt.plot(x, y2, color='r')
+plt.plot(x, y3, color='g')
+
+for i in np.arange(0, 10, 0.5): 
+    cte = i
+    cout = cte-x
+    plt.plot(x, cout, color='y')
+
+

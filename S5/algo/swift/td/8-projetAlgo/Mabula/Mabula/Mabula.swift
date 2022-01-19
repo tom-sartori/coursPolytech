@@ -41,7 +41,6 @@ struct Mabula: CustomStringConvertible, PTMabula {
         isMultiScore = !decompteParLesLongueursMax
         isPlayerOne = true
 
-        // TODO : Faire l'initialisation propre et pas avec quatre for.
         let listBool = randomColor()
         for i in 1 ..< 7 {  // Ligne haut
             setValue(x: 0, y: i, value: listBool[i - 1])
@@ -124,19 +123,25 @@ struct Mabula: CustomStringConvertible, PTMabula {
         let scoreBlack: Int
 
         if isMultiScore {   // Score calculated by multiplication of groups.
-            scoreWhite = getScoreMulti(isForWhite: true)
-            scoreBlack = getScoreMulti(isForWhite: false)
+            scoreWhite = compterMultiplication(isForWhite: true)
+            scoreBlack = compterMultiplication(isForWhite: false)
             // print("Multi score | White : \(scoreWhite), Black : \(scoreBlack)")
         }
         else {  // The score is the best group.
-            scoreWhite = getScoreBestGroup(isForWhite: true)
-            scoreBlack = getScoreBestGroup(isForWhite: false)
+            scoreWhite = compterMax(isForWhite: true)
+            scoreBlack = compterMax(isForWhite: false)
             // print("Group score | White : \(scoreWhite), Black : \(scoreBlack)")
         }
+//        print("Score joueur 1 : ", scoreWhite)
+//        print("Score joueur 2 : ", scoreBlack)
         return scoreWhite == scoreBlack ? nil : scoreWhite > scoreBlack
     }
 
-    public mutating func getScoreMulti(isForWhite: Bool) -> Int {
+    // Retourne la multiplication de tous les groupes du joueur en param.
+    // Si isForWhite == true, alors on calcule pour les blancs/le joueur 1, sinon les noirs/le joueur 2.
+    //
+    // compterMultiplication : PTMabula x Bool -> PTMabula x Int
+    public mutating func compterMultiplication(isForWhite: Bool) -> Int {
         var listIndexBall = getListCoord(isForWhite: isForWhite)
 
         var totalScore = 1
@@ -150,8 +155,8 @@ struct Mabula: CustomStringConvertible, PTMabula {
     // Retourne la taille du plus grand groupe pour la couleur en param.
     // Si isForWhite == true, alors on calcule pour les blancs/le joueur 1, sinon les noirs/le joueur 2.
     //
-    // getScoreBestGroup : PTMabula x Bool -> PTMabula x Int
-    public mutating func getScoreBestGroup (isForWhite: Bool) -> Int {
+    // compterMax : PTMabula x Bool -> PTMabula x Int
+    public mutating func compterMax(isForWhite: Bool) -> Int {
         var listIndexBall = getListCoord(isForWhite: isForWhite)
 
         var bestScore: Int = 0
@@ -236,7 +241,7 @@ struct Mabula: CustomStringConvertible, PTMabula {
     // (x, y) doit être sur une bordure et v ne doit pas être plus grand que le nombre de cases vides devant la bille en param.
     //
     // deplacer : Mabula x Int x Int x Int -> Mabula x Bool
-    mutating func deplacer(x: Int, y: Int, v: Int) -> Bool {
+    public mutating func deplacer(x: Int, y: Int, v: Int) -> Bool {
         guard 0 <= x && x < gameSize && 0 <= y && y < gameSize else {
             // Coordonnées non valides.
             return false
@@ -304,7 +309,7 @@ struct Mabula: CustomStringConvertible, PTMabula {
         else {  // Going left or up
             indexFirstNil = gameSize - v - 1
             indexLastNil = gameSize - 1
-            indexFirstValue = listIndexOfNil[listIndexOfNil.count - v] /// Todo check sinon inverse et [v]
+            indexFirstValue = listIndexOfNil[listIndexOfNil.count - v]
             indexLastValue = gameSize - v - 1
             startIndexInTableWithoutNil = tableWithoutNil.count - (indexLastValue - indexFirstValue) - 1
         }
@@ -353,19 +358,19 @@ struct Mabula: CustomStringConvertible, PTMabula {
         if x == x2 {    // On compte les cases vides sur une ligne horizontale.
             return table.indices
                     .filter( {
-                        $0 != 0 && $0 != gameSize - 1 &&    // On ne prend pas les bordures.
+                $0 != 0 && $0 != gameSize - 1 &&    // On ne prend pas les bordures.
                         Swift.min(y, y2) <= $0 && $0 <= Swift.max(y, y2) &&     // On prend que les cases qui sont sur la ligne (donc entre y et y2).
                         table[x][$0] == nil     // On prend que les cases vides.
-                    } )
+            } )
                     .count  // On compte le nombre de cases respectant les critères précédents, et on retourne le résultat.
         }
         else { // y1 == y2 : On compte les cases vides sur une colonne verticale.
             return table.indices
                     .filter( {
-                        $0 != 0 && $0 != gameSize - 1 &&    // On ne prend pas les bordures.
+                $0 != 0 && $0 != gameSize - 1 &&    // On ne prend pas les bordures.
                         Swift.min(x, x2) <= $0 && $0 <= Swift.max(x, x2) &&     // On prend que les cases qui sont sur la colonne (donc entre x et x2).
                         table[$0][y] == nil     // On prend que les cases vides.
-                    } )
+            } )
                     .count // On compte le nombre de cases respectant les critères précédents, et on retourne le résultat.
         }
     }
@@ -561,15 +566,69 @@ struct Mabula: CustomStringConvertible, PTMabula {
         return ItMabula(self, startX: startX, startY: startY)
     }
 
+
+    mutating func play(n: Int) {
+        var i: Int = 0
+
+        while i < n {
+
+            var found: Bool = false
+
+            var x: Int = 0
+            var y: Int = 0
+            while y < gameSize - 1 && !found {    // Top line
+                y += 1
+                found = getValue(x: x, y: y) == isPlayerOne
+            }
+
+            if !found {
+                x = gameSize - 1
+                y = 0
+                while y < gameSize - 1 && !found {   // Bottom line
+                    y += 1
+                    found = getValue(x: x, y: y) == isPlayerOne
+                }
+            }
+
+            if !found {
+                x = 0
+                y = 0
+                while x < gameSize - 1 && !found {   // Left line
+                    x += 1
+                    found = getValue(x: x, y: y) == isPlayerOne
+                }
+            }
+
+            if !found {
+                x = 0
+                y = gameSize - 1
+                while x < gameSize - 1 && !found {   // Right line
+                    x += 1
+                    found = getValue(x: x, y: y) == isPlayerOne
+                }
+            }
+
+            var v: Int
+            repeat {
+                v = Int.random(in: 1..<gameSize - 2)
+            } while !deplacer(x: x, y: y, v: v)
+
+            print(isPlayerOne ? "Joueur 1" : "Joueur 2", "| x : ", x, " | y : ", y, " | v : ", v)
+            print(self)
+            i += 1
+            isPlayerOne = !isPlayerOne
+        }
+    }
+
     // Uniquement utilisé pour l'affichage
     //
     // description: PTMabule -> String
     public var description: String {
-        var itMabula = makeIterator()
+        let itMabula = makeIterator()
         var str : String = "   0   1   2  3   4   5   6  7 \n"
 
         var i: Int = 0
-        while let elt = itMabula.next() {
+        for elt in itMabula {
             if i % 8 == 0 { str += (i / 8).description + "  " }   // Affichage chiffre à gauche.
             str += elt == nil ? "⭕" : elt == true ? "⚪" : "⚫"   // Affichage valeur case.
             str += "  "
@@ -583,7 +642,7 @@ struct Mabula: CustomStringConvertible, PTMabula {
 
 // Itérateur sur le mabula permettant de le parcourir.
 // Le parcour est fait de la gauche à la droite et de haut en bas.
-public struct ItMabula: IteratorProtocol {
+public struct ItMabula: Sequence, IteratorProtocol {
     private var table: [[Bool?]]
     private var currentX: Int
     private var currentY: Int
@@ -591,7 +650,7 @@ public struct ItMabula: IteratorProtocol {
     // Initialisation d'un itérateur sur la table du mabula. La premiere case est la case supérieure gauche (0; 0).
     //
     // init: Mabula -> ItMabula
-    init (_ mabula: Mabula) {
+    fileprivate init (_ mabula: Mabula) {
         table = mabula.table
         currentX = 0
         currentY = 0
@@ -600,7 +659,7 @@ public struct ItMabula: IteratorProtocol {
     // Initialisation de l'itérator à partir d'une valeur spécifique.
     //
     // init: Mabula x Int x Int -> ItMabula
-    init(_ mabula: Mabula, startX: Int, startY: Int) {
+    fileprivate init(_ mabula: Mabula, startX: Int, startY: Int) {
         guard 0 <= startX && startX < mabula.table.count && 0 <= startY && startY < mabula.table.count else { fatalError("ItMabula : init") }
         table = mabula.table
         currentX = startX

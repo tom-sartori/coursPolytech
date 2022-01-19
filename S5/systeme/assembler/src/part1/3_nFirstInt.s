@@ -4,7 +4,7 @@
 .data
 enter:  .asciz "Entrez un max : "
 scan:   .asciz "%d"
-start:  .word 0
+i:      .word 0
 max:    .word 0
 msg:    .asciz "%d \n"
 
@@ -24,6 +24,7 @@ main:
         // r0++
         // bl condition
 
+init:
     ldr r0, =enter
     bl printf
 
@@ -31,34 +32,30 @@ main:
     ldr r1, =max
     bl scanf
 
-
-    ldr r1, =start
-    ldr r1, [r1]
-    ldr r2, =max
-    ldr r2, [r2]
-
-    bl condition
+loop:
+    ldr r3, =i
+    ldr r3, [r3]
+    ldr r4, =max
+    ldr r4, [r4]
 
 condition:
-    cmp r1, r2  // Si r1 < r2
-    blt boucle
-    bl end
+    cmp r4, r3
+    blt end     // Si r3 < r4 -> Si i < max
 
-boucle:
+print:
     ldr r0, =msg
-    // r1 == start
+    // r1 == i
+    mov r1, r3  // r1 prend r3 avec r3 == valeur de i.
     bl printf
 
-    ldr r1, =start
-    ldr r1, [r1]
-    add r1, r1, #1
-    str r1, [=start]
+increment:
+    ldr r3, =i
+    ldr r3, [r3]
+    add r3, r3, #1
+    ldr r4, =i
+    str r3, [r4]
 
-
-    ldr r2, =max
-    ldr r2, [r2]
-
-    bl condition
+    b loop
 
 end:
     bl exit

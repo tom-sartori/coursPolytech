@@ -1,6 +1,5 @@
 // CustomStringConvertible est présent pour l'affichage uniquement
 protocol PTMabula : CustomStringConvertible, Sequence {
-
     associatedtype IteratorMabula : IteratorProtocol
 
     // Création d'un TMabula : initialise le plateau en plaçant 12 billles noires et 12 billes blanches sur les bords du plateau uniquement ; il n'y a pas plus de 2 billes de la même couleur placées à côté.
@@ -15,15 +14,11 @@ protocol PTMabula : CustomStringConvertible, Sequence {
     // Donne le nombre de cases vides entre deux cases aux coordonnées (x, y) et (x', y')
     func nombreCasesVides(x: Int, y: Int, x2: Int, y2: Int) -> Int
 
-    /// - Todo: A modifier. Mettre le joueur en param.
     // Compte la longueur maximale parmi les groupes des billes du joueur j.
-//    func compterMax() -> Int
-    mutating func getScoreBestGroup (isForWhite: Bool) -> Int
+    mutating func compterMax(isForWhite: Bool) -> Int
 
-    /// - Todo: A modifier. Mettre le joueur en param.
     // Compte la multiplication de la longueur de chaque groupe de bille du joueur j.
-//    func compterMultiplication() -> Int
-    mutating func getScoreMulti(isForWhite: Bool) -> Int
+    mutating func compterMultiplication(isForWhite: Bool) -> Int
 
     // Retourne True si la bille sur la case en (x, y) appartient au joueur actuel
     func isBilleCaseAppartient(x: Int, y: Int) -> Bool
@@ -44,7 +39,6 @@ protocol PTMabula : CustomStringConvertible, Sequence {
     // Afin de parcourrir la collection
     func makeIterator() -> ItMabula
 
-    /// - Todo: Changed for mutating
     // Donne le gagnant de la partie de Mabula.
     // True si c'est le joueur 1, False sinon
     // Si vide il y a égalité

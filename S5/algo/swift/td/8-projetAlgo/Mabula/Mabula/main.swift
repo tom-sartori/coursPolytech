@@ -14,6 +14,8 @@ func run() {
     print("La partie commence, le joueur 1️⃣ a les billes blanches et le joueur 2️⃣ a les billes noires")
 
     var jeu: Mabula = Mabula(decompteParLesLongueursMax: !askIsMultiScore())
+    print(jeu)
+    jeu.play(n: 23)
 
     while jeu.isPlayerOneCanPlay() || jeu.isPlayerTwoCanPlay() {
         print("C'est au joueur ", jeu.isPlayerOneToPlay() ? "1️⃣" : "2️⃣", " de joueur. ")

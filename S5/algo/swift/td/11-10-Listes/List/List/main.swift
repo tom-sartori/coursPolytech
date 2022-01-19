@@ -11,7 +11,6 @@ import Foundation
 print("Hello, World!")
 
 
-
 var list: TListEntier = TListEntier()
 print(list)
 assert(list.count == 0)
@@ -27,21 +26,30 @@ assert(list.head.previous.value == value)
 assert(list.head.previous.previous.value == 1)
 
 print(list)
-//print(list.head.next)
-//print(list.head.next.next)
-//print(list.head.previous)
-//print(list.head.next.previous)
+
 
 let value2: Int = 7
 list.insertFirst(value: value2)
 print(list)
-print(list.head.next)
-print(list.head.next.next)
-
-print(list.head.previous)
-print(list.head.previous.previous)
 
 assert(list.head.next.value == value2)
 assert(list.head.next.next.value == value)
 assert(list.head.previous.value == value)
 assert(list.head.previous.previous.value == value2)
+
+
+let value3: Int = 1
+list.insertLast(value: value3)
+print(list)
+
+assert(list.head.previous.value == value3)
+assert(list.head.previous.previous.value == value)
+
+
+print("ITERATOR")
+var it = list.makeIterator()
+print(it)
+print(it.next() as Any)
+print(it.changeValue(value: 0))
+print(list)
+
