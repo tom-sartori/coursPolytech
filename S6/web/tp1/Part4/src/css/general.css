@@ -1,0 +1,61 @@
+body {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 35% 65%;
+    background-color: rgba(113, 111, 129, 1);
+}
+
+body > * {
+    padding: 10px;
+}
+
+header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    /*border: solid rgba(248, 240, 223, 0.5) 2px;*/
+    background-color: rgba(252, 255, 166, 1);
+}
+
+aside {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    /*border: solid rgba(248, 240, 223, 0.5) 2px;*/
+    background-color: rgba(217, 215, 241, 1);
+}
+
+aside > p {
+    text-align: justify;
+}
+
+main {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    /*border: solid rgba(248, 240, 223, 0.5) 2px;*/
+    background-color: rgba(255, 203, 203, 1);
+
+    display: grid;
+    grid-gap: 10px;
+}
+
+/* Indentation des éléments du main, sous les titres. */
+section > h2~* {
+    margin-left: 15px;
+}
+
+footer {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    /*border: solid rgba(248, 240, 223, 0.5) 2px;*/
+    background-color: rgba(231, 251, 190, 1);
+}
+
+body > * {
+    border-radius: 20px;
+}

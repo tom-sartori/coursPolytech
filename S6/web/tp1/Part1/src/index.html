@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Tom Sartori">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+</head>
+
+<body>
+<header>
+    <h1>Polytech Montpellier</h1>
+</header>
+
+
+<aside>
+    <h2>A propos</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in commodo lorem. Etiam dignissim, turpis
+        scelerisque aliquet elementum, ligula urna tempor magna, a dignissim ipsum ex at risus. In lorem nibh,
+        semper a pretium vitae, consequat a dui. Maecenas id fermentum justo, sed dignissim ante. Suspendisse sit
+        amet sapien mattis, malesuada diam a, imperdiet lectus. In lacinia a dolor quis faucibus. Mauris interdum
+        lorem a consequat ornare. Morbi pharetra iaculis libero eu posuere. Duis varius tellus vel urna bibendum,
+        eget vulputate ipsum tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut at enim
+        et purus interdum vehicula. In hac habitasse platea dictumst. Vivamus bibendum quam eu ante luctus cursus.
+        Fusce scelerisque diam felis, consequat tincidunt arcu aliquam ut.
+    </p>
+</aside>
+
+
+<main>
+    <section>
+        <h2>Ajouter un étudiant</h2>
+        <form>
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" name="lastName">
+
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" name="firstName">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+
+            <label for="formation">Formation</label>
+            <input type="text" id="formation" name="formation">
+        </form>
+    </section>
+
+    <section>
+        <h2>Liste des étudiants</h2>
+
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Formation</th>
+                <th>Action(s)</th>
+            </tr>
+            <tr>
+                <td>Sartori</td>
+                <td>Tom</td>
+                <td>tomsartori4@gmail.com</td>
+                <td>IG</td>
+                <td class="tdAction">
+                    <button class="buttonDelete" type="button">Supprimer ?</button>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>Polytech Montpellier</p>
+</footer>
+
+</body>
+</html>

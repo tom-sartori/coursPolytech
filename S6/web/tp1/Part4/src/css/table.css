@@ -1,0 +1,62 @@
+table {
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: center;
+}
+
+thead th {
+    width: 100%;
+}
+
+th, td {
+    padding: 5px;
+}
+
+thead {
+    background-color: rgba(105, 78, 78, 1);
+    color: white;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(196, 163, 163, 1);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(136, 111, 111, 1);
+}
+
+tbody tr:hover {
+    background-color: white;
+    transition: background-color 1s;
+}
+
+.buttonInfo, .buttonDelete {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.buttonInfo:hover, .buttonDelete:hover {
+    color: white;
+    transition: background-color, color 1s;
+}
+
+.buttonInfo {
+    background-color: rgba(154, 208, 236, 1);
+}
+
+.buttonInfo:hover {
+    background-color: rgba(21, 114, 161, 1);
+}
+
+.buttonDelete {
+    background-color: rgba(255, 128, 128, 1);
+}
+
+.buttonDelete:hover {
+    background-color: rgba(239, 75, 75, 1);
+}
+
+
+

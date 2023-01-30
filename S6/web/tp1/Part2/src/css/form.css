@@ -1,0 +1,67 @@
+form {
+    display: grid;
+    grid-gap: 10px;
+}
+
+form > label, form > input {
+    border: solid black 1px;
+    background-color: inherit;
+    padding: 2px;
+    height: 20px;
+}
+
+form > label {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    text-align: center;
+}
+
+form > input {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+input:hover {
+    opacity: 0.6;
+    background-color: white;
+    transition: background-color 1s;
+}
+
+form > label:nth-child(4n + 1) {
+    /*background-color: red;*/
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+form > label:nth-child(4n + 3) {
+    /*background-color: blue;*/
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+form > input:nth-child(4n + 2) {
+    /*background-color: forestgreen;*/
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+form > input:nth-child(4n + 4) {
+    /*background-color: orange;*/
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+form > input[type=submit] {
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+form > input[type=submit]:hover {
+    background-color: greenyellow;
+    /*background-color: rgba(198, 213, 216, 1);*/
+    transition: background-color 1s;
+}

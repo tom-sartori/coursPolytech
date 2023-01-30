@@ -1,0 +1,21 @@
+label, input {
+    border: solid black 1px;
+    background-color: inherit;
+    padding: 2px;
+    height: 20px;
+}
+
+label {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+input {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+input:hover {
+    opacity: 0.6;
+    background-color: white;
+}

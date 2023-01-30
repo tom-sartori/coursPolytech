@@ -1,0 +1,61 @@
+
+@media only screen and (max-width: 900px) {
+    tr > th:nth-child(3), tr > td:nth-child(3) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    form > label {
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+    }
+
+    form > input {
+        grid-column-start: 2 !important;
+        grid-column-end: 3 !important;
+    }
+
+    form > input[type=submit] {
+        grid-column-start: 1 !important;
+        grid-column-end: 3 !important;
+    }
+
+    tr > th:nth-child(4), tr > td:nth-child(4) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    aside {
+        display: none;
+    }
+
+    main {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    tr > th:nth-child(5), tr > td:nth-child(5) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    form > label, form > input {
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+
+        border-radius: 5px;
+    }
+
+    form > input[type=submit] {
+        grid-column-start: 1 !important;
+        grid-column-end: 2 !important;
+    }
+
+    section > h2~* {
+        margin-left: 0;
+    }
+}
+

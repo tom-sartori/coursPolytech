@@ -1,0 +1,51 @@
+body {
+    display: grid;
+    grid-gap: 2px;
+}
+
+body > * {
+    padding: 10px;
+}
+
+header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    border: solid yellow 2px;
+    background-color: rgba(255, 255, 0, 0.1);
+}
+
+aside {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    border: solid magenta 2px;
+    background-color: rgba(255, 0, 255, 0.1);
+}
+
+main {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    border: solid orange 2px;
+    background-color: rgba(255, 165, 0, 0.1);
+
+    display: grid;
+    grid-gap: 10px;
+}
+
+/* Indentation des éléments du main, sous les titres. */
+section > *:nth-child(2) {
+    margin-left: 10px;
+}
+
+footer {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    border: solid green 2px;
+    background-color: rgba(0, 255, 0, 0.1);
+}

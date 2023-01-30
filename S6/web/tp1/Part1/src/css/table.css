@@ -1,0 +1,35 @@
+table, th, td {
+    background-color: white;
+    border: solid black 1px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+th, td {
+    height: 25px;
+    padding: 0 5px 0 5px;
+    text-align: center;
+}
+
+.tdAction {
+    padding: 0;
+}
+
+
+.buttonDelete {
+    border: none;
+    background-color: red;
+    height: inherit;
+}
+
+.buttonDelete:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+    cursor: grab;
+}
+
+.buttonDelete:active {
+    cursor: grabbing;
+}

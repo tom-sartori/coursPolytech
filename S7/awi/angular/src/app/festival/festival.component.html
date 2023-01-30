@@ -1,0 +1,13 @@
+<div>
+  <p>Nombre de festivals : {{ festivalList.length }}</p>
+
+  <ul *ngFor="let festival of festivalList">
+    <li>{{ festival.name }} </li>
+  </ul>
+
+  <button (click)="onAdd()">Add</button>
+  <button (click)="onEdit()">Edit</button>
+
+  <input type="text" [(ngModel)]="festivalList[0].name">
+  <input type="text" [(ngModel)]="inputText">
+</div>

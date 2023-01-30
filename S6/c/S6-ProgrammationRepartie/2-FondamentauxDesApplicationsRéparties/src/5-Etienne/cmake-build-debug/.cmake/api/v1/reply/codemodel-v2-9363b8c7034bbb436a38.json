@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "tubesEtSignaux",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "5-Etienne::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-5-Etienne-Debug-1271fcf8bdf2878001e9.json",
+					"name" : "5-Etienne",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/tom/Documents/partageGit/coursPolytech/S6/c/S6-ProgrammationRepartie/2-FondamentauxDesApplicationsRéparties/src/5-Etienne/cmake-build-debug",
+		"source" : "/Users/tom/Documents/partageGit/coursPolytech/S6/c/S6-ProgrammationRepartie/2-FondamentauxDesApplicationsRéparties/src/5-Etienne"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

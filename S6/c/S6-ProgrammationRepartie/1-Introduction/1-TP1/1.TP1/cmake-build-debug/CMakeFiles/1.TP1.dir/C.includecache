@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tom/Documents/partageGit/coursPolytech/S6/c/TP/1.TP1/tp1.c
+stdio.h
+-
+stdlib.h
+-
+limits.h
+-
+
